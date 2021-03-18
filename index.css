@@ -12,14 +12,15 @@
 }
 .block
 {
+    cursor: pointer;
     width: 20px;
     height: 20px;
     border-radius: 5px;
     text-align: center;
-    background-color: aquamarine;
+    background-color:rgb(163, 170, 163)
 }
 
 .block:hover
 {
-    background-color:red
+    background-color:rgb(61, 59, 59)
 }

@@ -1,8 +1,8 @@
 var width = 20;
 var height = 20;
 var count = 50;   //雷数
-const rowDir = [ -1, 0, 1, 1, -1, -1, 0, 1];
-const colDir = [ 0, -1, 1, -1, 1, -1, 1, 0];
+// const rowDir = [ -1, 0, 1, 1, -1, -1, 0, 1];
+// const colDir = [ 0, -1, 1, -1, 1, -1, 1, 0];
 let ArrMap = [];   //定义一个全局变量
 let DOM = document.getElementById('map');
 // window.onload = function()
@@ -17,6 +17,16 @@ let DOM = document.getElementById('map');
 //     BuildMap();
 //         //渲染地图
 // }
+function process()
+{
+    Init();
+    BuildRender();
+        // //建立雷
+    CalculateRenderAround();
+    // //计算周围的雷数，初始化“数组”
+    BuildMap();
+        //渲染地图
+}
 function btn1()
 {
     //只能点一个，点击完后三个都设为disabled
@@ -27,13 +37,7 @@ function btn1()
     document.getElementById('btn1').disabled = true;
     document.getElementById('btn2').disabled = true;
     document.getElementById('btn3').disabled = true;
-    Init();
-    BuildRender();
-        // //建立雷
-    CalculateRenderAround();
-    // //计算周围的雷数，初始化“数组”
-    BuildMap();
-        //渲染地图
+    process();
 }
 function btn2()
 {
@@ -44,13 +48,7 @@ function btn2()
     document.getElementById('btn1').disabled = true;
     document.getElementById('btn2').disabled = true;
     document.getElementById('btn3').disabled = true;
-    Init();
-    BuildRender();
-        // //建立雷
-    CalculateRenderAround();
-    // //计算周围的雷数，初始化“数组”
-    BuildMap();
-        //渲染地图
+    process();
 }
 function btn3()
 {
@@ -61,13 +59,7 @@ function btn3()
     document.getElementById('btn1').disabled = true;
     document.getElementById('btn2').disabled = true;
     document.getElementById('btn3').disabled = true;
-    Init();
-    BuildRender();
-        // //建立雷
-    CalculateRenderAround();
-    // //计算周围的雷数，初始化“数组”
-    BuildMap();
-        //渲染地图
+    process();
 }
 function CalculateRenderAround()
 {
@@ -174,7 +166,7 @@ function BuildMap()
             // console.log(i,j);
             let td = document.createElement('td');
             td.className = 'block';
-            td.style.backgroundColor = '#BDBDBD';
+            // td.style.backgroundColor = '#33FFBB';
             td.id = i + '-' +j;
             // if(ArrMap[i][j].isRender)
             // {
@@ -287,9 +279,13 @@ function showAllRender()
         {
             if(ArrMap[i][j].isRender)
             {
-                let dom = document.getElementById(i + '-' + j);
+                let dom = document.getElementById(i + '-' + j); 
+                // dom.className = 'block change'
                 dom.style.backgroundColor = '#A4A4A4';
-                dom.innerHTML = '<span style="color:red">@</span>';
+                // dom.innerHTML = '<span style="color:red">@</span>';
+                // dom.background = '#d9d9d9 url(../images/mine.png) no-repeat center';
+                dom.style.background = "#DA2A12 url('mine.png') no-repeat center";
+                dom.style.backgroundSize = "20px 20px";
             }
         }
     }
