@@ -1,0 +1,25 @@
+#map
+{
+    position: absolute;
+    border: 3px #A4A4A4 solid;
+    border-radius: 20px;
+    padding: 5px;
+}
+#choose
+{
+    position: absolute;
+    left:800px;
+}
+.block
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.block:hover
+{
+    background-color:red
+}
