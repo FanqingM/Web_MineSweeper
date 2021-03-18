@@ -17,8 +17,29 @@ let DOM = document.getElementById('map');
 //     BuildMap();
 //         //渲染地图
 // }
+var oTxt=document.getElementsByTagName("input")[0];
+var n= 0, timer=null;
+    //开始计时
+function start() {
+        clearInterval(timer);
+        timer=setInterval(function () {
+            n++;
+            var m=parseInt(n/60);
+            var s=parseInt(n%60);
+            oTxt.value=toDub(m)+":"+toDub(s);
+        },1000/60);
+    }
+    //暂停并且清空计时器
+function over() {
+        clearInterval(timer);
+    }
+    //补零
+    function toDub(n){
+        return n<10?"0"+n:""+n;
+    }
 function process()
 {
+    start();
     Init();
     BuildRender();
         // //建立雷
@@ -26,6 +47,10 @@ function process()
     // //计算周围的雷数，初始化“数组”
     BuildMap();
         //渲染地图
+}
+function replay()
+{
+    window.location.reload()
 }
 function btn1()
 {
@@ -178,6 +203,13 @@ function BuildMap()
             //     // console.log(str);
             //     td.innerHTML = str;
             // }   //for test
+            // td.onmousedown = function(e)
+            // {
+            //     if(e.button == 1)
+            //     {
+            //         Click(i,j);
+            //     }
+            // }
             td.onclick = function()
             {
                 Click(i,j);
@@ -209,19 +241,40 @@ function Click(i,j)
 {
     let currentDom = document.getElementById(i + '-' + j);
     let current = ArrMap[i][j];
+    var flag = true;
     // console.log(m,n);
     if(current.isRender)
     {
         currentDom.style.backgroundColor = '#A4A4A4';
-        currentDom.innerHTML = '<span style="color:red">@</span>';
+        // currentDom.innerHTML = '<span style="color:red">@</span>';
+        over();
         showAllRender();
-        alert('game over');
+        DOM.style.pointerEvents = 'none';
+        alert('game over,replay?');
     }
-    console.log(i,j);
+    // console.log(i,j);
     // current.isShow = true;
     // currentDom.style.backgroundColor = '#848484';
     // currentDom.innerHTML = current.countAround;
     showNum(i,j);
+    for(let m=0;m<height;m++)
+    {
+        for(let s=0;s<width;s++)
+        {
+            let now = ArrMap[m][s];
+            if(now.isShow === false && now.isRender === false)
+            {
+                flag = false;
+            }
+        }
+    }
+    if(flag === true)
+    {
+        over();
+        showAllRender();
+        DOM.style.pointerEvents = 'none';
+        alert('win,replay?');
+    }
 }
 function showNum(i,j)
 //展示数字
@@ -279,6 +332,7 @@ function showAllRender()
         {
             if(ArrMap[i][j].isRender)
             {
+                ArrMap[i][j].isShow = true;
                 let dom = document.getElementById(i + '-' + j); 
                 // dom.className = 'block change'
                 dom.style.backgroundColor = '#A4A4A4';
@@ -290,3 +344,4 @@ function showAllRender()
         }
     }
 }
+
