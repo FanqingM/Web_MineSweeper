@@ -10,6 +10,8 @@ The code may not be formal and brief due to learning time constraints
 - Github Repo地址: https://github.com/FanqingM/Web_MineSweeper
 - 试玩地址:https://fanqingm.github.io/Web_MineSweeper/
 
+###需要指出并未采用响应式布局，在移动端可能会很丑陋。。。。
+
 ## 规则
 
 - 点雷游戏结束，出现所有雷
