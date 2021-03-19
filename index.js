@@ -55,9 +55,9 @@ function replay()
 function btn1()
 {
     //只能点一个，点击完后三个都设为disabled
-    width = 20;
-    height = 20;
-    count = 50;
+    width = 10;
+    height = 10;
+    count = 1;
     console.log(width,height,count);
     document.getElementById('btn1').disabled = true;
     document.getElementById('btn2').disabled = true;

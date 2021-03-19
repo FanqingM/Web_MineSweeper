@@ -4,25 +4,24 @@
     <meta charset = "UTF-8">
 </head>
 <body>
-    <div id="mqp"></div>
+    <button onclick="test(1)" ondblclick="test(2)"></button>
+    <div id="result"></div>
 </body>
 <script>
-    document.onmousedown = function(e) {
-        if (e.button == 3) {
-            console.log("right");
- //如果button 为2      即点击鼠标左键   控制台输出right
-        } else if (e.button == 0) {
-            console.log("right");
-  //如果 button 为 0 即点击鼠标右键   控制台输出left
-        } 
-        else if(e.button == 1 ){
-            console.log("left");
-   //如果button 为 0 即点击鼠标滚轮  控制台输出scroll
-        }
-   else 
-   {
-       console.log("helo")
-   }
-        }
+var i = 1;
+function test(n) {
+i = n;
+var val = setTimeout("call();",250);
+if(i==2){
+clearTimeout(val);
+}
+}
+function call() {
+if(i==1){
+alert('click');
+}else if(i==2){
+alert('dblclick');
+}
+}
 </script>
 </html>
