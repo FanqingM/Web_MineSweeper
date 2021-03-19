@@ -1,6 +1,8 @@
 # Web_Minesweeper(for igem and os project)
 
 The code may not be formal and brief due to learning time constraints
+## AutoTable是动态生成表格的demo
+## Timer是定时器的demo
 
 ## 地址
 
